@@ -51,5 +51,30 @@ namespace AMCAssignment1.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction(nameof(HomeController.Courses));
+            }
+
+            var course = DbContext.Courses.FirstOrDefault(p => p.Id == id);
+
+            if (course == null)
+            {
+                return RedirectToAction(nameof(HomeController.Courses));
+            }
+
+            var model = new IndexCoursesViewModel
+            {
+                CourseId = course.Id,
+                Name = course.Name,
+                NumberOfHours = course.NumberOfHours,
+                Users = course.Users,
+            };
+            return View(model);
+        }
     }
 }
