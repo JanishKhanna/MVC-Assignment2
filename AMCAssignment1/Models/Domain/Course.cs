@@ -12,7 +12,6 @@ namespace AMCAssignment1.Models.Domain
         public int Id { get; set; }
         public string Name { get; set; }
         public int NumberOfHours { get; set; }
-
         public virtual List<ApplicationUser> Users { get; set; }
     }
 }
