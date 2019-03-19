@@ -1,0 +1,29 @@
+﻿@model List<AMCAssignment1.Models.View_Models.IndexCoursesViewModel>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>Courses</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Number of Hours</th>
+            <th>Number of Enrollments</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+         {
+            <tr>
+                <td>@course.Name</td>
+                <td>@course.NumberOfHours</td>
+                <td>@course.Users.Count</td>
+                <td>@Html.ActionLink("Details", "Details", new { id = course.CourseId })</td>
+            </tr>
+         }
+    </tbody>
+</table>

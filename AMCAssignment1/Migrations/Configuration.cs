@@ -24,6 +24,7 @@ namespace AMCAssignment1.Migrations
             ApplicationUser janeDoe;
             Course softwareDeveloperCourse;
             Course cyberDefenseCourse;
+            Course networkSecurityDiploma;
 
             if (!context.Users.Any(p => p.UserName ==
             "johndoe@test.com"))
@@ -85,6 +86,20 @@ namespace AMCAssignment1.Migrations
             {
                 cyberDefenseCourse = context.Courses
                     .First(p => p.Name == "Cyber Defense");
+            }
+
+            if(!context.Courses.Any(p =>
+                p.Name == "Network Security Diploma"))
+            {
+                networkSecurityDiploma = new Course();
+                networkSecurityDiploma.Name = "Network Security Diploma";
+                networkSecurityDiploma.NumberOfHours = 400;
+                context.Courses.Add(networkSecurityDiploma);
+            }
+            else
+            {
+                networkSecurityDiploma = context.Courses
+                    .First(p => p.Name == "Network Security Diploma");
             }
 
             context.SaveChanges();
